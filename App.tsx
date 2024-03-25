@@ -10,13 +10,12 @@ const Stack = createNativeStackNavigator();
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='DangNhap'>
+      <Stack.Navigator initialRouteName='DangNhap' screenOptions={{headerShown: false}}>
         <Stack.Screen
           name="DangNhap"
           component={DangNhap}
-          options={{title: 'Chào mừng'}}
         />
-        <Stack.Screen name="Drawer" component={DrawerNavigator} />
+        <Stack.Screen name="Drawer" component={DrawerNavigator}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
