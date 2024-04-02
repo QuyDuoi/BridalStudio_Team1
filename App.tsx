@@ -6,7 +6,7 @@ import DangNhap from './src/DangNhap';
 import DrawerNavigator from './src/DrawerNavigator';
 
 const Stack = createNativeStackNavigator();
-
+//test
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
