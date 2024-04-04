@@ -50,6 +50,8 @@ const QuanLyCongViec = () => {
   const [showDialogOption, setshowDialogOption] = useState(false)
   const [showDialogUpdate, setshowDialogUpdate] = useState(false)
   const [showDialogDelete, setshowDialogDelete] = useState(false)
+  const [showDialogDetail, setshowDialogDetail] = useState(false)
+
 
   const [tenCongViec, settenCongViec] = useState('')
   const [nhanVien, setnhanVien] = useState('')
@@ -133,6 +135,22 @@ const QuanLyCongViec = () => {
                 Chọn chức năng
               </Text>
 
+              {/* nút mở dialog chi tiết công việc */}
+              <TouchableOpacity
+                onPress={() => {
+                  setshowDialogDetail(true)
+                  setshowDialogOption(false)
+                }}
+                style={[st.dialogButton, { backgroundColor: '#1E232C' }]}>
+                <Text style={{
+                  color: 'white',
+                  fontSize: 18,
+                }}>
+                  Chi tiết công việc
+                </Text>
+              </TouchableOpacity>
+
+              {/* nút mở dialog cập nhật công việc */}
               <TouchableOpacity
                 onPress={() => {
                   setshowDialogUpdate(true)
@@ -147,6 +165,8 @@ const QuanLyCongViec = () => {
                 </Text>
               </TouchableOpacity>
 
+
+              {/* nút mở dialog xóa công việc */}
               <TouchableOpacity
                 onPress={() => {
                   setshowDialogDelete(true)
@@ -160,6 +180,54 @@ const QuanLyCongViec = () => {
                   Xóa công việc
                 </Text>
               </TouchableOpacity>
+
+            </View>
+
+          </Pressable>
+        </Modal>
+
+        {/* dialog chi tiết công việc */}
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={showDialogDetail}>
+          <Pressable
+            onPress={() => {
+              setshowDialogDetail(false)
+              settenCongViec('')
+              setnhanVien('')
+              setkhachHang('')
+              setngayBatDau('')
+              setngayKetThuc('')
+              setmoTa('')
+              settrangThai(false)
+            }}
+            style={st.khungDialog}>
+
+            <View style={st.dialog}>
+              <Text style={[st.dialogTitle, { alignSelf: 'center', }]}>
+                Chi tiết công việc
+              </Text>
+
+              <Text style={st.text}>Tên công việc: {tenCongViec}</Text>
+              <Text style={st.text}>Tên nhân viên: {nhanVien}</Text>
+              <Text style={st.text}>Tên khách hàng: {khachHang}</Text>
+              <Text style={st.text}>Ngày bắt đầu: {ngayBatDau}</Text>
+              <Text style={st.text}>Ngày kết thúc: {ngayKetThuc}</Text>
+              <Text style={st.text}>Mô tả: {moTa}</Text>
+              <Text style={st.text}>Trạng thái công việc: {trangThai ? 'Hoàn thành' : 'Chưa hoàn thành'}</Text>
+
+              <TouchableOpacity
+                onPress={() => setshowDialogDetail(false)}
+                style={[st.dialogButton, { backgroundColor: '#1E232C' }]}>
+                <Text style={{
+                  color: 'white',
+                  fontSize: 18,
+                }}>
+                  Thoát
+                </Text>
+              </TouchableOpacity>
+
 
             </View>
 
