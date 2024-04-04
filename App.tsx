@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
   return (
-    <QuanLyNhanVien/>
+    <DrawerNavigator/>
   )
 }
 
